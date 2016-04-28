@@ -1,0 +1,43 @@
+@*
+* Copyright 2015 Kynetics SRL
+*
+* This file is part of orobot.
+*
+* orobot is free software: you can redistribute it and/or modify
+* it under the terms of the GNU Affero General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* orobot is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU Affero General Public License for more details.
+*
+* You should have received a copy of the GNU Affero General Public License
+* along with orobot.  If not, see <http://www.gnu.org/licenses/>.
+*@
+@()(implicit messages: Messages)
+
+<div class="user col-md-6 col-md-offset-3" ng-controller="HomeCtrl" ng-init="init()">
+    <div class="row">
+        <hr class="col-md-12" />
+        <h4 class="col-md-8">@Messages("welcome.signed.in")</h4>
+        <hr class="col-md-12" />
+    </div>
+    <div class="row data">
+        <div class="col-md-12">
+            <div class="row">
+                <p class="col-md-6"><strong>@Messages("first.name"):</strong></p><p class="col-md-6">{{user.firstName ? user.firstName : 'None'}}</p>
+            </div>
+            <div class="row">
+                <p class="col-md-6"><strong>@Messages("last.name"):</strong></p><p class="col-md-6">{{user.lastName ? user.lastName : 'None'}}</p>
+            </div>
+            <div class="row">
+                <p class="col-md-6"><strong>@Messages("full.name"):</strong></p><p class="col-md-6">{{user.fullName ? user.fullName : 'None'}}</p>
+            </div>
+            <div class="row">
+                <p class="col-md-6"><strong>@Messages("email"):</strong></p><p class="col-md-6">{{user.email ? user.email : 'None'}}</p>
+            </div>
+        </div>
+    </div>
+</div>

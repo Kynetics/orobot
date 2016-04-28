@@ -1,0 +1,23 @@
+codiceFiscale,firstName,lastName,email,street,cap,city,pv,phone,robot uuid
+cstmr001,customer001,customer001,customer001@kynetics.it,via longhin 1,35100,padova,pv,123456789,f7bcc568-2b97-422e-9932-a503b084a397
+cstmr002,customer002,customer002,customer002@kynetics.it,via longhin 2,35100,padova,pv,223456789,bf50c3ba-5a53-42af-b624-9998f65a7be1
+cstmr003,customer003,customer003,customer003@kynetics.it,via longhin 3,35100,padova,pv,323456789,4e36f5c2-b21e-4ef5-b645-57f0f3a6295c
+cstmr004,customer004,customer004,customer004@kynetics.it,via longhin 4,35100,padova,pv,423456789,d5a66015-ee2c-48d6-87ee-b641cd25a120
+cstmr005,customer005,customer005,customer005@kynetics.it,via longhin 5,35100,padova,pv,123456789,3f3d95d1-b0da-438d-acf2-9f2649bbd998
+cstmr006,customer006,customer006,customer006@kynetics.it,via longhin 6,35100,padova,pv,223456789,ef19841e-a9fd-4382-937c-bf66644cd4fb
+cstmr007,customer007,customer007,customer007@kynetics.it,via longhin 7,35100,padova,pv,323456789,50e37b71-a5b9-4538-94c9-63e4ab341a0f
+cstmr008,customer008,customer008,customer008@kynetics.it,via longhin 8,35100,padova,pv,423456789,ca0aec27-ec80-4188-9a80-3956ac47a516
+cstmr009,customer009,customer009,customer009@kynetics.it,via longhin 9,35100,padova,pv,123456789,1bdc31b7-a9bc-4eda-91cc-252dcc048c9d
+cstmr010,customer010,customer010,customer010@kynetics.it,via longhin 10,35100,padova,pv,223456789,5ff23d44-34b7-4cc1-90bc-5e97a13ce5ee
+cstmr011,customer011,customer011,customer011@kynetics.it,via longhin 11,35100,padova,pv,323456789,5a676153-50e2-4519-9c53-d349de8eb448
+cstmr012,customer012,customer012,customer012@kynetics.it,via longhin 12,35100,padova,pv,423456789,431373b0-7c4c-42d1-8d53-a28de811b678
+cstmr012,customer013,customer013,customer013@kynetics.it,via longhin 13,35100,padova,pv,123456789,e909a093-4494-4d08-bc7d-7b30edcdb379
+cstmr014,customer014,customer014,customer014@kynetics.it,via longhin 14,35100,padova,pv,223456789,d513bb97-13c0-49db-ab00-4a1dc8925cf5
+cstmr015,customer015,customer015,customer015@kynetics.it,via longhin 15,35100,padova,pv,323456789,e643dae6-0662-4058-b17b-77d690f701c4
+cstmr016,customer016,customer016,customer016@kynetics.it,via longhin 16,35100,padova,pv,423456789,07b83aef-69ec-4c2a-a193-62073f350d2a
+cstmr017,customer017,customer017,customer017@kynetics.it,via longhin 17,35100,padova,pv,223456789,5647b799-87fc-43ca-95f2-f226d5b8df3c
+cstmr018,customer018,customer018,customer018@kynetics.it,via longhin 18,35100,padova,pv,323456789,a4083039-71ad-4680-a40e-99e554d7b7e6
+cstmr019,customer019,customer019,customer019@kynetics.it,via longhin 19,35100,padova,pv,423456789,5f3a8632-5423-48fa-ae30-c08e3effe376
+cstmr020,customer020,customer020,customer020@kynetics.it,via longhin 20,35100,padova,pv,123456789,6db7b5c7-3960-4758-86b2-a00bbbe48e85
+cstmr021,customer021,customer021,customer021@kynetics.it,via longhin 14,35100,padova,pv,223456789,a824cefb-6fea-40a8-8a1a-09a2137ccfd1
+cstmr022,customer022,customer022,customer022@kynetics.it,via longhin 15,35100,padova,pv,323456789,b3db415d-d41e-4ca2-8fd8-40f7a1ae41ee

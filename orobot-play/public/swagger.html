@@ -1,0 +1,155 @@
+<!--
+Copyright 2015 Kynetics SRL
+
+This file is part of orobot.
+
+orobot is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+orobot is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with orobot.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Swagger UI</title>
+    <link rel="icon" type="image/png" href="/webjars/swagger-ui/2.1.4/images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/webjars/swagger-ui/2.1.4/images/favicon-16x16.png" sizes="16x16" />
+    <link href='/webjars/swagger-ui/2.1.4/css/typography.css' media='screen' rel='stylesheet' type='text/css'/>
+    <link href='/webjars/swagger-ui/2.1.4/css/reset.css' media='screen' rel='stylesheet' type='text/css'/>
+    <link href='/webjars/swagger-ui/2.1.4/css/screen.css' media='screen' rel='stylesheet' type='text/css'/>
+    <link href='/webjars/swagger-ui/2.1.4/css/reset.css' media='print' rel='stylesheet' type='text/css'/>
+    <link href='/webjars/swagger-ui/2.1.4/css/print.css' media='print' rel='stylesheet' type='text/css'/>
+    <script src='/webjars/swagger-ui/2.1.4/lib/jquery-1.8.0.min.js' type='text/javascript'></script>
+    <script src='/webjars/swagger-ui/2.1.4/lib/jquery.slideto.min.js' type='text/javascript'></script>
+    <script src='/webjars/swagger-ui/2.1.4/lib/jquery.wiggle.min.js' type='text/javascript'></script>
+    <script src='/webjars/swagger-ui/2.1.4/lib/jquery.ba-bbq.min.js' type='text/javascript'></script>
+    <script src='/webjars/swagger-ui/2.1.4/lib/handlebars-2.0.0.js' type='text/javascript'></script>
+    <script src='/webjars/swagger-ui/2.1.4/lib/underscore-min.js' type='text/javascript'></script>
+    <script src='/webjars/swagger-ui/2.1.4/lib/backbone-min.js' type='text/javascript'></script>
+    <script src='/webjars/swagger-ui/2.1.4/swagger-ui.js' type='text/javascript'></script>
+    <script src='/webjars/swagger-ui/2.1.4/lib/highlight.7.3.pack.js' type='text/javascript'></script>
+    <script src='/webjars/swagger-ui/2.1.4/lib/jsoneditor.min.js' type='text/javascript'></script>
+    <script src='/webjars/swagger-ui/2.1.4/lib/marked.js' type='text/javascript'></script>
+    <script src='/webjars/swagger-ui/2.1.4/lib/swagger-oauth.js' type='text/javascript'></script>
+
+    <!-- Some basic translations -->
+    <!-- <script src='lang/translator.js' type='text/javascript'></script> -->
+    <!-- <script src='lang/ru.js' type='text/javascript'></script> -->
+    <!-- <script src='lang/en.js' type='text/javascript'></script> -->
+
+    <script type="text/javascript">
+    $(function () {
+      var url = window.location.search.match(/url=([^&]+)/);
+      if (url && url.length > 1) {
+        url = decodeURIComponent(url[1]);
+      } else {
+        url = "http://petstore.swagger.io/v2/swagger.json";
+      }
+
+      // Pre load translate...
+      if(window.SwaggerTranslator) {
+        window.SwaggerTranslator.translate();
+      }
+      window.swaggerUi = new SwaggerUi({
+        url: url,
+        dom_id: "swagger-ui-container",
+        supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
+        onComplete: function(swaggerApi, swaggerUi){
+          if(typeof initOAuth == "function") {
+            initOAuth({
+              clientId: "your-client-id",
+              clientSecret: "your-client-secret-if-required",
+              realm: "your-realms",
+              appName: "your-app-name",
+              scopeSeparator: ",",
+              additionalQueryStringParams: {}
+            });
+          }
+
+          if(window.SwaggerTranslator) {
+            window.SwaggerTranslator.translate();
+          }
+
+          $('pre code').each(function(i, e) {
+            hljs.highlightBlock(e)
+          });
+
+          addApiKeyAuthorization();
+        },
+        onFailure: function(data) {
+          log("Unable to Load SwaggerUI");
+        },
+        docExpansion: "none",
+        jsonEditor: false,
+        apisSorter: "alpha",
+        defaultModelRendering: 'schema',
+        showRequestHeaders: false
+      });
+
+      function addApiKeyAuthorization(){
+        var key = encodeURIComponent($('#input_apiKey')[0].value);
+        var tok = encodeURIComponent($('#input_authToken')[0].value);
+        if(key && key.trim() != "") {
+            var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization("api_key", key, "query");
+            window.swaggerUi.api.clientAuthorizations.add("api_key", apiKeyAuth);
+            log("added key " + key);
+        }
+        if(tok && tok.trim() != "") {
+            var authTok = new SwaggerClient.ApiKeyAuthorization("X-Auth-Token", tok, "header");
+            window.swaggerUi.api.clientAuthorizations.add("authToken", authTok);
+            log("added authToken " + tok);
+        }
+        var csrfTok = new SwaggerClient.ApiKeyAuthorization("Csrf-Token", "nocheck", "header");
+        window.swaggerUi.api.clientAuthorizations.add("csrfToken", csrfTok);
+        log("added csrfTok " + "nocheck");
+
+      }
+
+      $('#input_apiKey').change(addApiKeyAuthorization);
+
+      // if you have an apiKey you would like to pre-populate on the page for demonstration purposes...
+      /*
+        var apiKey = "myApiKeyXXXX123456789";
+        $('#input_apiKey').val(apiKey);
+      */
+
+      window.swaggerUi.load();
+
+      function log() {
+        if ('console' in window) {
+          console.log.apply(console, arguments);
+        }
+      }
+  });
+  </script>
+</head>
+
+<body class="swagger-section">
+<div id='header'>
+    <div class="swagger-ui-wrap" style="height: 64px;">
+        <a id="logo" href="http://swagger.io">swagger</a>
+        <form id='api_selector'>
+            <div class='input'>
+                <div><input placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl" type="text"/></div>
+                <div><input placeholder="auth token" id="input_authToken" name="authToken" type="text"/></div>
+            </div>
+            <div class='input'><input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/></div>
+            <div class='input'><a id="explore" href="#" data-sw-translate>Explore</a></div>
+        </form>
+    </div>
+</div>
+
+<div id="message-bar" class="swagger-ui-wrap" data-sw-translate>&nbsp;</div>
+<div id="swagger-ui-container" class="swagger-ui-wrap"></div>
+</body>
+</html>

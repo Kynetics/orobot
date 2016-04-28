@@ -1,0 +1,29 @@
+{
+  "event": {
+    "title": "Eventi",
+    "FALLEN_PERSON": "Persona a terra",
+    "DETECTED_PERSON": "Persona rilevata",
+    "RECOGNIZED_PERSON": "Persona riconosciuta",
+    "BATTERY_LEVEL": "Batteria scarica",
+    "search": {
+      "title": "Cerca eventi",
+      "priorityHigh": "Elevata",
+      "priorityMedium": "Media",
+      "priorityLow": "Bassa",
+      "priorityUndefined": "Livello non previsto"
+    },
+    "detail": {
+      "title":"Dettaglio evento",
+      "uuid":"UUID",
+      "messageUuid":"Id messaggio",
+      "priority":"Priorità",
+      "timestamp":"Data ricezione evento",
+      "timestampRec":"Data evento",
+      "coordinateX":"Coordinate X",
+      "coordinateY":"Coordinate Y",
+      "personId":"Id persona",
+      "name":"Nome"
+    }
+
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "name": "ui",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "1.5.5",
+    "angular-animate": "1.5.5",
+    "angular-cookies": "1.5.5",
+    "angular-resource": "1.5.5",
+    "angular-route": "1.5.5",
+    "angular-messages": "1.5.5",
+    "stacktrace-js": "0.6.4",
+    "ngtoast": "2.0.0",
+    "angular-ui-validate": "1.2.2",
+    "angular-ui-router": "0.2.18",
+    "angular-translate": "2.11.0",
+    "angular-translate-storage-cookie": "2.11.0",
+    "angular-translate-loader-partial": "2.11.0",
+    "angular-dynamic-locale": "0.1.30",
+    "angular-local-storage": "0.2.7",
+    "angular-material": "1.1.0-rc4",
+    "angular-sanitize": "1.5.5",
+    "angular-data-table": "0.4.15",
+    "jQuery": "2.2.3"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.5.5"
+  },
+  "appPath": "app",
+  "moduleName": "angularApp",
+  "overrides": {
+    "angular-data-table": {
+      "main": [
+        "release/dataTable.helpers.js",
+        "release/dataTable.css",
+        "release/material.css"
+      ]
+    },
+    "jQuery": {
+      "main": [
+        "dist/jquery.js"
+      ]
+    }
+  },
+  "resolutions": {
+    "angular": "1.5.5"
+  }
+}

@@ -1,0 +1,10 @@
+{
+	"main": {
+    "title": "oRobot",
+    "subtitle": "Centro di controllo oRobot",
+
+    "logged": {
+      "message": "Sei loggato come utente \"{{fullName}}\"."
+    }
+  }
+}

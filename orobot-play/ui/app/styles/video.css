@@ -1,0 +1,45 @@
+/*
+* Copyright 2015 Kynetics SRL
+*
+* This file is part of orobot.
+*
+* orobot is free software: you can redistribute it and/or modify
+* it under the terms of the GNU Affero General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* orobot is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU Affero General Public License for more details.
+*
+* You should have received a copy of the GNU Affero General Public License
+* along with orobot.  If not, see <http://www.gnu.org/licenses/>.
+*/
+.videoContainer {
+    position:relative;
+}
+.videoControls {
+    float:left;
+    width:250px;
+    text-align:center;
+    border: 2px solid black;
+}
+.videoOtherClients {
+    height:200px;
+    overflow-y:scroll;
+}
+.videoSelfVideo {
+    height:120px;
+    width:180px;
+    float:left;
+    border:1px solid gray;
+    margin-left:10px;
+}
+
+.videoCallerVideo {
+    height:240px;
+    width:320px;
+    border:1px solid gray;
+    margin-left:10px;
+}

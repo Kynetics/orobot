@@ -1,0 +1,18 @@
+{
+  "login": {
+    "title": "Autenticazione",
+    "form": {
+      "username": "Nome utente",
+      "username.placeholder": "Inserisci il tuo nome utente",
+      "password": "Password",
+      "password.placeholder": "Inserisci la tua password",
+      "rememberme": "Login Automatico",
+      "button": "Entra"
+    },
+    "messages": {
+      "error": {
+        "authentication": "<strong>Autentificazione fallita!</strong> Controlla le tue credenziali e riprova"
+      }
+    }
+  }
+}

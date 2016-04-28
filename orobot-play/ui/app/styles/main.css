@@ -1,0 +1,150 @@
+/*
+* Copyright 2015 Kynetics SRL
+*
+* This file is part of orobot.
+*
+* orobot is free software: you can redistribute it and/or modify
+* it under the terms of the GNU Affero General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* orobot is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU Affero General Public License for more details.
+*
+* You should have received a copy of the GNU Affero General Public License
+* along with orobot.  If not, see <http://www.gnu.org/licenses/>.
+*/
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.hidden{
+  visibility:hidden;
+}
+
+/* WARNING workaround to fix dtable (different rows one over another) https://github.com/Swimlane/angular-data-table/issues/174 */
+.dt .dt-body {
+  z-index: inherit;
+}
+
+/*http://stackoverflow.com/questions/29022756/how-do-i-change-the-color-of-an-md-icon-in-angular-material */
+md-icon svg {
+  fill: inherit;
+}
+
+.dt .dt-cell{
+  -webkit-user-select: inherit;
+  -moz-user-select: inherit;
+  -ms-user-select: inherit;
+  -o-user-select: inherit;
+  user-select: inherit;
+}
+md-toolbar h3 {
+  margin: auto;
+  font-weight: 500;
+}
+
+md-content {
+  padding: 24px; }
+
+.starter-template {
+  padding: 40px 15px;
+}
+
+form .text-danger {
+  color: #950e2d;
+  margin-bottom: 10px;
+}
+
+form .ng-invalid.ng-dirty {
+  border-color: #950e2d;
+}
+
+form .ng-valid.ng-dirty {
+  border-color: #057553;
+}
+
+form input, form button {
+  margin: 5px 0;
+}
+
+fieldset {
+  margin-top: 100px;
+}
+
+.voffset {
+  margin-top: 4px;
+}
+
+.voffset1 {
+  margin-top: 8px;
+}
+
+.voffset2 {
+  margin-top: 16px;
+}
+
+.voffset3 {
+  margin-top: 20px;
+}
+
+.voffset4 {
+  margin-top: 24px;
+}
+
+.voffset5 {
+  margin-top: 28px;
+}
+
+.voffset6 {
+  margin-top: 32px;
+}
+
+.voffset7 {
+  margin-top: 36px;
+}
+
+.voffset8 {
+  margin-top: 40px;
+}
+
+.voffset9 {
+  margin-top: 44px;
+}
+
+.voffset-bottom80 {
+  margin-bottom: 80px;
+}
+
+a {
+  cursor: pointer;
+}
+
+.provider {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  border-radius: 4px;
+  outline: none;
+}
+
+.alert-material {
+  position: fixed;
+  right: 12px;
+  top: 62px;
+  z-index: 1;
+  display: inline-block;
+  min-height: 48px;
+  padding: 13px 24px 12px;
+  font-family: 'Roboto', sans-serif;
+  color: #f1f1f1;
+  cursor: default;
+  background: #323232;
+  border-radius: 2px;
+  outline: none;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+
+
+}

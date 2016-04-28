@@ -1,0 +1,46 @@
+<!--
+Copyright 2015 Kynetics SRL
+
+This file is part of orobot.
+
+orobot is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+orobot is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with orobot.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<div layout-align="center" layout="row">
+  <md-card style="width: 380px;">
+    <md-card-header>
+      <md-card-header-text>
+        <h1 style="font-weight: 300; 	text-align:center;  color: #636363;" translate="login.title"></h1>
+      </md-card-header-text>
+    </md-card-header>
+    <md-card-content>
+      <form name="orobotLogin" ng-submit="login()">
+        <md-card-title-text>
+          <md-input-container class="md-block">
+            <label translate="login.form.username"></label>
+            <input type="text" ng-model="username">
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label translate="login.form.password"></label>
+            <input type="password" ng-model="password">
+            <div ng-show="authenticationError">
+              <div style="color: red" translate="login.messages.error.authentication"></div>
+            </div>
+          </md-input-container>
+        </md-card-title-text>
+      </form>
+    </md-card-content>
+    <md-button class="md-raised md-primary" translate="login.form.button" type="submit" ng-click="login()">
+    </md-button>
+  </md-card>
+</div>

@@ -1,0 +1,91 @@
+<!--
+Copyright 2015 Kynetics SRL
+
+This file is part of orobot.
+
+orobot is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+orobot is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with orobot.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+  <md-card-title>
+    <md-card-title-text>
+      <span class="md-headline" translate="robot.search.searchParemeters"></span>
+      <form layout="row" name="searchForm">
+        <md-input-container flex class="md-block">
+          <label translate="robot.search.UUID"></label>
+          <input ng-model="EventSearchCtrl.filter.uuid">
+        </md-input-container>
+      </form>
+    </md-card-title-text>
+  </md-card-title>
+  <md-card-actions layout="row" layout-align="end center">
+    <md-button class="md-raised" translate="global.action.clear" ng-click="EventSearchCtrl.clear()">
+    </md-button>
+    <md-button class="md-raised md-primary" translate="global.action.search" ng-click="EventSearchCtrl.search()">
+    </md-button>
+  </md-card-actions>
+</md-card>
+
+<dtable style="margin: 8px" options="options"
+        rows="EventSearchCtrl.events" class="material">
+  <column name="Tipo evento" flex-grow="1">{{'event.'+$row.header|translate}}</column>
+  <column name="Data evento" flex-grow="2">
+    {{$row.timestampRec | date:'HH:mm d-MM-yyyy'}}
+  </column>
+  <column name="Data ricezione evento" flex-grow="2">
+    {{$row.payload.timestamp | date:'HH:mm d-MM-yyyy'}}
+  </column>
+  <column name="Priorità" flex-grow="1">
+    <div ng-switch on={{$row.payload.priority}}>
+      <div ng-switch-when="1" ng-style="{'color':'red'}" translate="event.search.priorityHigh"></div>
+      <div ng-switch-when="2" ng-style="{'color':'orange'}" translate="event.search.priorityMedium"></div>
+      <div ng-switch-when="3" ng-style="{'color':'green'}" translate="event.search.priorityLow"></div>
+      <div ng-switch-default translate="event.search.priorityUndefined">{{$row.payload.priority}}</div>
+    </div>
+  </column>
+  <column name="Azioni" flex-grow="1">
+    <md-button class="md-raised md-primary" translate="global.action.detail"
+               ng-click="EventSearchCtrl.showEventDetail($row.payload.messageUuid)"></md-button>
+  </column>
+</dtable>
+<nav>
+  <ul class="pagination pagination-sm">
+    <li ng-show="links['first']" ng-click="loadPage(links['first'])">
+      <a>&lt;&lt;</a>
+    </li>
+    <li ng-show="links['prev']" ng-click="loadPage(links['prev'])">
+      <a>&lt;</a>
+    </li>
+    <li ng-show="page > 2" ng-click="loadPage(page - 2)">
+      <a>{{page - 2}}</a>
+    </li>
+    <li ng-show="page > 1" ng-click="loadPage(page - 1)">
+      <a>{{page - 1}}</a>
+    </li>
+    <li class="active">
+      <a>{{page}}</a>
+    </li>
+    <li ng-show="page < links['last']" ng-click="loadPage(page + 1)">
+      <a>{{page + 1}}</a>
+    </li>
+    <li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)">
+      <a>{{page + 2}}</a>
+    </li>
+    <li ng-show="links['next']" ng-click="loadPage(links['next'])">
+      <a>&gt;</a>
+    </li>
+    <li ng-show="links['last']" ng-click="loadPage(links['last'])">
+      <a>&gt;&gt;</a>
+    </li>
+  </ul>
+</nav>

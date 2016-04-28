@@ -1,0 +1,38 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# swagger UI
+# ~~~~
+GET		    /swagger                         controllers.ApiDocController.getUi()
+GET         /api/v1/api-docs                 controllers.ApiDocController.getJson()
+
+GET         /api/robots/list                 controllers.RobotController.listRobots(page:Int?=1, size:Int?=20, order: Option[Seq[Int]]?=None)
+GET         /api/robots/:robotId             controllers.RobotController.getRobot(robotId:String)
+GET         /api/getMap/:mapname             controllers.RobotController.getMap(mapname:String)
+GET         /wsconnect                       controllers.WebSocketsController.wsConnect(token:String)
+
+GET         /api/events/list                 controllers.EventController.listEvents(page:Int?=1, size:Int?=20)
+GET         /api/events/robot/:robotId       controllers.EventController.getRobotEvents(robotId:String,page:Int?=1, size:Int?=20)
+GET         /api/events/:eventId             controllers.EventController.getEvent(eventId:String)
+
+GET         /                                com.tuplejump.playYeoman.Yeoman.index
+
+
+
+GET         /user                            controllers.ApplicationController.user
+GET         /signOut                         controllers.ApplicationController.signOut
+POST        /signIn                          controllers.CredentialsAuthController.authenticate
+POST        /signUp                          controllers.SignUpController.signUp
+
+# Dynamic part of the url
+GET         /views/$template<.+>.html        controllers.ApplicationController.view(template)
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file                    controllers.Assets.at(path="/public", file)
+GET		    /webjars/*file    			     controllers.WebJarAssets.at(file)
+
+->          /                                yeoman.Routes
+
+
+POST        /api/robots/create               controllers.RobotController.createRobot

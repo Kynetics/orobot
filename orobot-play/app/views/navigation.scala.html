@@ -1,0 +1,54 @@
+@*
+* Copyright 2015 Kynetics SRL
+*
+* This file is part of orobot.
+*
+* orobot is free software: you can redistribute it and/or modify
+* it under the terms of the GNU Affero General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* orobot is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU Affero General Public License for more details.
+*
+* You should have received a copy of the GNU Affero General Public License
+* along with orobot.  If not, see <http://www.gnu.org/licenses/>.
+*@
+@()(implicit messages: Messages)
+
+<div class="navigation-area" ng-controller="NavigationCtrl">
+    <header class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+                    <span class="sr-only">@Messages("toggle.navigation")</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">@Messages("home.brand")</a>
+            </div>
+            <div class="collapse navbar-collapse" ng-class="{ in: !navCollapsed }" ng-click="navCollapsed = !navCollapsed">
+                <ul class="nav navbar-nav">
+                    <!-- User is logged in -->
+                    <li ng-if="isAuthenticated()"><a ui-sref="home">@Messages("home")</a></li>
+
+                    <!-- User is logged out -->
+                    <li ng-if="!isAuthenticated()"><a ui-sref="signIn">@Messages("home")</a></li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- User is logged in -->
+                    <li ng-if="isAuthenticated()"><a ui-sref="home">{{user.fullName ? user.fullName : user.firstName}}</a></li>
+                    <li ng-if="isAuthenticated()" ui-sref="signOut"><a href="">@Messages("sign.out")</a></li>
+
+                    <!-- User is logged out -->
+                    <li ng-if="!isAuthenticated()"><a ui-sref="signIn">@Messages("sign.in")</a></li>
+                    <li ng-if="!isAuthenticated()"><a ui-sref="signUp">@Messages("sign.up")</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+</div>

@@ -1,0 +1,29 @@
+{
+  "global": {
+    "application_name": "oRobot",
+    "navbar": {
+      "home": "oRobot",
+      "settings": "Settings",
+      "register_oRobot": "Registra oRobot",
+      "search_oRobot": "Cerca oRobot",
+      "detail_oRobot": "Dettaglio oRobot",
+      "events": "Lista eventi"
+    },
+    "form": {
+      "validation": {
+        "required": "Campo obbligatorio",
+        "text": "Numeri non ammessi",
+        "unique": "Il nome deve essere unico"
+      }
+    },
+    "action": {
+      "save": "Salva",
+      "connect": "Connetti",
+      "detail": "Dettaglio",
+      "disconnect": "Disconnetti",
+      "search": "Cerca",
+      "clear": "Pulisci campi",
+      "cancel": "Annulla"
+    }
+  }
+}

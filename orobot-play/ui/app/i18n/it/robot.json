@@ -1,0 +1,62 @@
+{
+  "robot": {
+    "edit": {
+      "title": "Modifica oRobot",
+      "customer": {
+        "title": "Dati utente",
+        "codiceFiscale": "Codice fiscale",
+        "codiceFiscale.placeholder": "Inserisci il codice fiscale",
+        "firstName": "Nome",
+        "firstName.placeholder": "Inserisci il nome",
+        "lastName": "Cognome",
+        "lastName.placeholder": "Inserisci il cognome",
+        "email": "email",
+        "email.placeholder": "Inserisci l'email",
+        "phone": "Numero di telefono",
+        "phone.placeholder": "Inserisci un numero di telefono"
+      },
+      "address": {
+        "title": "Indirizzo",
+        "street": "Via",
+        "street.placeholder": "Via",
+        "cap": "C.A.P.",
+        "cap.placeholder": "C.A.P.",
+        "city": "Città",
+        "city.placeholder": "Inserisci la città",
+        "pv": "Numero civico",
+        "pv.placeholder": "Inserisci il numero civico"
+      }
+    },
+    "search": {
+      "name": "Nome",
+      "title": "Cerca oRobot",
+      "UUID": "UUID",
+      "connectionStatus.true": "Connesso",
+      "connectionStatus.false": "Off line",
+      "controlledByNoOne": "---",
+      "searchParemeters": "Parametri di ricerca"
+    },
+    "add": {
+      "add": "Add robot"
+    },
+    "detail": {
+      "title": "Dettaglio",
+      "detailRobot": "Robot",
+      "video": "Video Call",
+      "UUID": "UUID",
+      "controlPanel": "Pannello di controllo robot",
+      "configStatus": "Stato configurazione",
+      "mqttConnectedStatus": "Connessione mqtt",
+      "removedStatus": "Attualmente nel sistema",
+      "startWebcall": "Chiama",
+      "available": "Disponibile",
+      "offline": "Offline",
+      "stopWebcall": "Interrompi chiamata",
+      "map": "Mappa",
+      "events": "Elenco Eventi",
+      "operator": "Operatore",
+      "coordinates": "Coordinate",
+      "robot": "Robot"
+    }
+  }
+}

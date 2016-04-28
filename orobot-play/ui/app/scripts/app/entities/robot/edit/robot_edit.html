@@ -1,0 +1,103 @@
+<!--
+Copyright 2015 Kynetics SRL
+
+This file is part of orobot.
+
+orobot is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+orobot is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with orobot.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<h3 class="voffset2" translate="robot.edit.customer.title">
+</h3>
+<!-- Notes on form tweaks: -->
+<!-- By HTML5 specifications, a field that is readonly cannot be required too (it's excluded from validation) -->
+<form name="orobotCreateForm" ng-submit="orobotCreateForm.$valid && RobotEditCtrl.save()">
+  <md-input-container md-is-error="characterform.firstName.$invalid && characterform.$submitted" class="md-block">
+    <label translate="robot.edit.customer.firstName"></label>
+    <input md-maxlength="100" required="" md-no-asterisk="" name="firstName" type="text"
+           ng-model="RobotEditCtrl.customer.firstName" ng-pattern="/^[a-zA-Z\s]*$/">
+    <div ng-messages="orobotCreateForm.firstName.$error">
+      <div ng-message="pattern" translate="global.form.validation.text"></div>
+      <div ng-message="required" translate="global.form.validation.required"></div>
+    </div>
+  </md-input-container>
+  <md-input-container md-is-error="characterform.lastName.$invalid && characterform.$submitted" class="md-block">
+    <label translate="robot.edit.customer.lastName"></label>
+    <input md-maxlength="100" required="" md-no-asterisk="" name="lastName"
+           ng-model="RobotEditCtrl.customer.lastName">
+    <div ng-messages="orobotCreateForm.lastName.$error">
+      <div ng-message="required" translate="global.form.validation.required"></div>
+    </div>
+  </md-input-container>
+  <md-input-container md-is-error="characterform.codiceFiscale.$invalid && characterform.$submitted" class="md-block">
+    <label translate="robot.edit.customer.codiceFiscale"></label>
+    <input md-minlength="16" md-maxlength="16" required="" name="codiceFiscale"
+           ng-model="RobotEditCtrl.customer.codiceFiscale">
+    <div ng-messages="orobotCreateForm.codiceFiscale.$error">
+      <div ng-message="required" translate="global.form.validation.required"></div>
+      <div ng-message="['minlength', 'maxlength']">
+      </div>
+    </div>
+  </md-input-container>
+  <md-input-container md-is-error="characterform.clientEmail.$invalid && characterform.$submitted" class="md-block">
+    <label>Client Email</label>
+    <input required="" type="email" name="clientEmail" ng-model="RobotEditCtrl.customer.email" minlength="10"
+           maxlength="100"
+           ng-pattern="/^.+@.+\..+$/">
+    <div ng-messages="orobotCreateForm.clientEmail.$error" role="alert">
+      <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+        Your email must be between 10 and 100 characters long and look like an e-mail address.
+      </div>
+    </div>
+  </md-input-container>
+  <md-input-container md-is-error="characterform.phone.$invalid && characterform.$submitted" class="md-block">
+    <label translate="robot.edit.customer.phone"></label>
+    <input required="" name="phone" ng-model="RobotEditCtrl.customer.phone">
+    <div ng-messages="orobotCreateForm.phone.$error">
+      <div ng-message="required" translate="global.form.validation.required"></div>
+    </div>
+  </md-input-container>
+  <md-input-container md-is-error="characterform.city.$invalid && characterform.$submitted" class="md-block">
+    <label translate="robot.edit.address.city"></label>
+    <input required="" name="city" ng-model="RobotEditCtrl.address.city">
+    <div ng-messages="orobotCreateForm.city.$error">
+      <div ng-message="required" translate="global.form.validation.required"></div>
+    </div>
+  </md-input-container>
+  <md-input-container md-is-error="characterform.cap.$invalid && characterform.$submitted" class="md-block">
+    <label translate="robot.edit.address.cap"></label>
+    <input required="" name="cap" ng-model="RobotEditCtrl.address.cap">
+    <div ng-messages="orobotCreateForm.cap.$error">
+      <div ng-message="required" translate="global.form.validation.required"></div>
+    </div>
+  </md-input-container>
+  <md-input-container md-is-error="characterform.street.$invalid && characterform.$submitted" class="md-block">
+    <label translate="robot.edit.address.street"></label>
+    <input required="" name="street" ng-model="RobotEditCtrl.address.street">
+    <div ng-messages="orobotCreateForm.street.$error">
+      <div ng-message="required" translate="global.form.validation.required"></div>
+    </div>
+  </md-input-container>
+  <md-input-container md-is-error="characterform.pv.$invalid && characterform.$submitted" class="md-block">
+    <label translate="robot.edit.address.pv"></label>
+    <input required="" name="pv" ng-model="RobotEditCtrl.address.pv">
+    <div ng-messages="orobotCreateForm.pv.$error">
+      <div ng-message="required" translate="global.form.validation.required"></div>
+    </div>
+  </md-input-container>
+  <div
+    layout="row">
+    <md-button ui-sref="entity.robot_search" aria-label="cancel" class="md-raised" translate="global.action.cancel"></md-button>
+    <md-button class="md-raised md-primary" aria-label="save" type="submit" translate="global.action.save"></md-button>
+  </div>
+</form>
+

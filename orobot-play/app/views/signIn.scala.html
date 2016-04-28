@@ -1,0 +1,50 @@
+@*
+* Copyright 2015 Kynetics SRL
+*
+* This file is part of orobot.
+*
+* orobot is free software: you can redistribute it and/or modify
+* it under the terms of the GNU Affero General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* orobot is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU Affero General Public License for more details.
+*
+* You should have received a copy of the GNU Affero General Public License
+* along with orobot.  If not, see <http://www.gnu.org/licenses/>.
+*@
+@()(implicit request: RequestHeader, messages: Messages)
+
+@import forms.SignInForm.form
+@import b3.inline.fieldConstructor
+
+<fieldset class="col-md-6 col-md-offset-3" ng-controller="SignInCtrl">
+    <legend>@Messages("sign.in.credentials")</legend>
+    <form name="form" id="sign-in-form" ng-submit="submit()" ng-model-options="{ updateOn: 'submit blur' }" autocomplete="off">
+
+        @b3.email(form("email"), '_hiddenLabel -> Messages("email"), 'placeholder -> Messages("email"), 'class -> "form-control input-lg", 'required -> "", Symbol("ng-model") -> "email")
+        <div class="help-block text-danger" ng-if="form.email.$dirty" ng-messages="form.email.$error">
+            <div ng-message="required">@Messages("error.required")</div>
+            <div ng-message="email">@Messages("error.email")</div>
+        </div>
+
+        @b3.password(form("password"), '_hiddenLabel -> Messages("password"), 'placeholder -> Messages("password"), 'class -> "form-control input-lg", 'required -> "", Symbol("ng-model") -> "password")
+        <div class="help-block text-danger" ng-if="form.password.$dirty" ng-messages="form.password.$error">
+            <div ng-message="required">@Messages("error.required")</div>
+        </div>
+
+        @b3.checkbox(form("rememberMe"), '_text -> Messages("remember.me"), 'checked -> true, Symbol("ng-model") -> "rememberMe", Symbol("ng-init") -> "rememberMe=true")
+
+        <div class="form-group">
+            <button ng-disabled="form.$invalid" id="submit" type="submit" value="submit" class="btn btn-lg btn-primary btn-block">@Messages("sign.in")</button>
+        </div>
+
+        <div>
+            <p class="not-a-member">@Messages("not.a.member") <a ui-sref="signUp">@Messages("sign.up.now")</a></p>
+        </div>
+
+    </form>
+</fieldset>

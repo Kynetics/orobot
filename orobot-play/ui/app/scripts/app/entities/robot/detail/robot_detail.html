@@ -1,0 +1,97 @@
+<!--
+Copyright 2015 Kynetics SRL
+
+This file is part of orobot.
+
+orobot is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+orobot is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with orobot.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<div ng-show="RobotDetailCtrl.robot.locationMap" ng-click="RobotDetailCtrl.sendNewCoordinate($event)" id="map">
+  <img id="cursor" rotate map-mark-x="100" map-mark-y="100" ng-
+       map-mark-angle="RobotDetailCtrl.mapMarkAngle"
+       src="/scripts/assets/images/icon/ic_keyboard_arrow_up_black_24px.svg"
+  >  </img>
+</div>
+<md-content flex="initial" class="md-whiteframe-4dp">
+  <h3 translate="robot.detail.detailRobot"></h3>
+  <md-list>
+    <md-list-item class="md-2-line">
+      <div class="md-list-item-text" ng-class="{'md-offset': $index == 2 }">
+        <h3>{{RobotDetailCtrl.robot.uuid}}</h3>
+        <p class="md-subhead" translate="robot.detail.UUID"></p>
+      </div>
+    </md-list-item>
+    <md-list-item class="md-2-line">
+      <div class="md-list-item-text" ng-class="{'md-offset': $index == 2 }">
+        <h3>{{RobotDetailCtrl.robot.mqttConnected}}</h3>
+        <p class="md-subhead" translate="robot.detail.mqttConnectedStatus"></p>
+      </div>
+    </md-list-item>
+    <md-list-item class="md-2-line">
+      <div class="md-list-item-text" ng-class="{'md-offset': $index == 2 }">
+        <h3>{{RobotDetailCtrl.robot.configured}}</h3>
+        <p class="md-subhead" translate="robot.detail.configStatus"></p>
+      </div>
+    </md-list-item>
+    <md-list-item class="md-2-line">
+      <div class="md-list-item-text" ng-class="{'md-offset': $index == 2 }">
+        <h3>{{RobotDetailCtrl.robot.removed}}</h3>
+        <p class="md-subhead" translate="robot.detail.removedStatus"></p>
+      </div>
+    </md-list-item>
+    <md-list-item class="md-2-line">
+      <div class="md-list-item-text" ng-class="{'md-offset': $index == 2 }">
+          <md-button layout-align="center center" class="md-raised md-primary" translate="robot.detail.events"
+                     ng-click="RobotDetailCtrl.goToRobotEvent()">
+          </md-button>
+      </div>
+    </md-list-item>
+</md-content>
+</md-list>
+<div class="voffset2">
+  <md-button aria-label="{{'global.action.disconnect' | translate}}" translate="global.action.disconnect"
+             class="md-raised md-warn" ng-click="RobotDetailCtrl.closeConnection()">
+  </md-button>
+  <md-button class="md-raised md-primary" translate="global.action.connect"
+             ng-click="RobotDetailCtrl.startConnection()">
+  </md-button>
+</div>
+<!--EasyRtc container -->
+<md-content flex="initial" class="md-whiteframe-4dp voffset3">
+  <h3 translate="robot.detail.video"></h3>
+  <p><span translate="robot.detail.operator"></span>:&nbsp;<span
+    ng-style="{'color':RobotDetailCtrl.easyrtcid !==-1 ? 'green' : 'red'}"
+    translate="{{RobotDetailCtrl.easyrtcid !==-1 ? 'robot.detail.available':'robot.detail.offline'}}"></span></p>
+  <p><span translate="robot.detail.robot"></span>:&nbsp;<span
+    ng-style="{'color':RobotDetailCtrl.robot.easyrtcid !==-1 ? 'green' : 'red'}"
+    translate="{{RobotDetailCtrl.robot.easyrtcid !==-1 ? 'robot.detail.available':'robot.detail.offline'}}"></span></p>
+  <div class="videoContainer">
+    <div id="videos">
+      <video id="selfVideo" autoplay="autoplay" class="videoSelfVideo" muted="muted"
+             volume="0"></video>
+      <div style="position:relative;float:left;">
+        <video id="callerVideo" autoplay="autoplay" class="videoCallerVideo"></video>
+      </div>
+      <!-- each caller video needs to be in it's own div so it's close button can be positioned correctly -->
+    </div>
+  </div>
+  <div class="voffset2">
+    <md-button ng-disabled="!RobotDetailCtrl.robot.videoOnline"
+               class="md-raised {{!RobotDetailCtrl.isCalling ? 'md-primary':'md-warn'}}"
+               translate="{{!RobotDetailCtrl.isCalling ? 'robot.detail.startWebcall':'robot.detail.stopWebcall'}}"
+               ng-click="!RobotDetailCtrl.isCalling ? RobotDetailCtrl.performCall():RobotDetailCtrl.endCall()">
+      {{RobotDetailCtrl.easyrtcid}}
+    </md-button>
+  </div>
+</md-content>
+<!--END EasyRtc container -->

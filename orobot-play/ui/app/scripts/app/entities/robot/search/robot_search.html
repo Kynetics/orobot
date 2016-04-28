@@ -1,0 +1,75 @@
+<!--
+Copyright 2015 Kynetics SRL
+
+This file is part of orobot.
+
+orobot is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+orobot is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with orobot.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<dtable style="margin: 8px" options="options"
+        rows="RobotSearchCtrl.robots" class="material">
+  <column name="UUID" flex-grow="1">{{$row.UUID}}</column>
+  <column name="Nome Cognome" flex-grow="2">
+    {{$row.robotSummary.customerFirstName}} {{$row.robotSummary.customerLastName}}
+  </column>
+  <column name="Telefono" flex-grow="1">{{$row.robotSummary.customerPhone}}</column>
+  <column name="Stato connessione" flex-grow="1">
+    <md-icon ng-style="{'color':$row.robotSummary.isDeviceConnected? 'green' : 'red'}"
+             md-svg-src="/scripts/assets/images/icon/connected_24px.svg" class="s24" aria-label="Cake"></md-icon>
+  </column>
+  <column name="Livello attività" flex-grow="1">{{$row.robotSummary.activityLevel}}</column>
+  <column name="Attività" flex-grow="1">{{$row.robotSummary.activity}}</column>
+  <column name="Webcall" flex-grow="1">{{$row.robotSummary.webcall}}
+    <md-icon ng-style="{'color':$row.robotSummary.isDeviceConnected? 'green' : 'red'}"
+             md-svg-src="{{$row.robotSummary.isDeviceConnected?'/scripts/assets/images/icon/connected_24px.svg':'/scripts/assets/images/icon/ic_report_problem_black_24px.svg'}}"
+             class="s24" aria-label="Cake"></md-icon>
+  </column>
+  <column name="Controllato da" flex-grow="1">{{$row.robotSummary.controlledBy === null ? '-----' :
+                                              $row.robotSummary.controlledBy}}
+  </column>
+  <column name="Dettaglio" flex-grow="1">
+    <md-button class="md-raised md-primary" translate="global.action.connect"
+               ng-click="RobotSearchCtrl.showRobotDetail($row.UUID)"></md-button>
+  </column>
+</dtable>
+<nav>
+  <ul class="pagination pagination-sm">
+    <li ng-show="links['first']" ng-click="loadPage(links['first'])">
+      <a>&lt;&lt;</a>
+    </li>
+    <li ng-show="links['prev']" ng-click="loadPage(links['prev'])">
+      <a>&lt;</a>
+    </li>
+    <li ng-show="page > 2" ng-click="loadPage(page - 2)">
+      <a>{{page - 2}}</a>
+    </li>
+    <li ng-show="page > 1" ng-click="loadPage(page - 1)">
+      <a>{{page - 1}}</a>
+    </li>
+    <li class="active">
+      <a>{{page}}</a>
+    </li>
+    <li ng-show="page < links['last']" ng-click="loadPage(page + 1)">
+      <a>{{page + 1}}</a>
+    </li>
+    <li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)">
+      <a>{{page + 2}}</a>
+    </li>
+    <li ng-show="links['next']" ng-click="loadPage(links['next'])">
+      <a>&gt;</a>
+    </li>
+    <li ng-show="links['last']" ng-click="loadPage(links['last'])">
+      <a>&gt;&gt;</a>
+    </li>
+  </ul>
+</nav>

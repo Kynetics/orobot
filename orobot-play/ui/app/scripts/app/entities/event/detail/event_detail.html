@@ -1,0 +1,95 @@
+<!--
+Copyright 2015 Kynetics SRL
+
+This file is part of orobot.
+
+orobot is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+orobot is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with orobot.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<md-content flex="initial" class="md-whiteframe-4dp">
+  <h3>{{'event.'+EventDetailCtrl.event.header |translate}}</h3>
+  <md-list>
+    <md-list-item class="md-2-line">
+      <div class="md-list-item-text" ng-class="{'md-offset': $index == 2 }">
+        <h3>{{EventDetailCtrl.event.payload.robotId}}</h3>
+        <p class="md-subhead" translate="event.detail.uuid"></p>
+      </div>
+    </md-list-item>
+    <md-list-item class="md-2-line">
+      <div class="md-list-item-text" ng-class="{'md-offset': $index == 2 }">
+        <h3>{{EventDetailCtrl.event.payload.messageUuid}}</h3>
+        <p class="md-subhead" translate="event.detail.messageUuid"></p>
+      </div>
+    </md-list-item>
+    <md-list-item class="md-2-line">
+      <div class="md-list-item-text" ng-class="{'md-offset': $index == 2 }">
+        <h3>{{EventDetailCtrl.event.payload.timestamp | date:'HH:mm d-MM-yyyy'}}</h3>
+        <p class="md-subhead" translate="event.detail.timestamp"></p>
+      </div>
+    </md-list-item>
+    <md-list-item class="md-2-line">
+      <div class="md-list-item-text" ng-class="{'md-offset': $index == 2 }">
+        <h3>{{EventDetailCtrl.event.timestampRec | date:'HH:mm d-MM-yyyy'}}</h3>
+        <p class="md-subhead" translate="event.detail.timestampRec"></p>
+      </div>
+    </md-list-item>
+    <md-list-item class="md-2-line">
+      <div class="md-list-item-text" ng-class="{'md-offset': $index == 2 }">
+        <div ng-switch on={{EventDetailCtrl.event.payload.priority}}>
+          <div ng-switch-when="1" ng-style="{'color':'red'}" translate="event.search.priorityHigh"></div>
+          <div ng-switch-when="2" ng-style="{'color':'orange'}" translate="event.search.priorityMedium"></div>
+          <div ng-switch-when="3" ng-style="{'color':'green'}" translate="event.search.priorityLow"></div>
+          <div ng-switch-default translate="event.search.priorityUndefined">{{EventDetailCtrl.event.payload.priority}}
+          </div>
+        </div>
+        <p class="md-subhead" translate="event.detail.priority"></p>
+      </div>
+    </md-list-item>
+    <div ng-if="EventDetailCtrl.event.header==='FALLEN_PERSON'||EventDetailCtrl.event.header==='DETECTED_PERSON'">
+      <md-list-item class="md-2-line">
+        <div class="md-list-item-text" ng-class="{'md-offset': $index == 2 }">
+          <h3>{{EventDetailCtrl.event.payload.x}}</h3>
+          <p class="md-subhead" translate="event.detail.coordinateX"></p>
+        </div>
+      </md-list-item>
+      <md-list-item class="md-2-line">
+        <div class="md-list-item-text" ng-class="{'md-offset': $index == 2 }">
+          <h3>{{EventDetailCtrl.event.payload.y}}</h3>
+          <p class="md-subhead" translate="event.detail.coordinateX"></p>
+        </div>
+      </md-list-item>
+    </div>
+    <div ng-if="EventDetailCtrl.event.header==='DETECTED_PERSON'">
+      <md-list-item class="md-2-line">
+        <div class="md-list-item-text" ng-class="{'md-offset': $index == 2 }">
+          <h3>{{EventDetailCtrl.event.payload.personId}}</h3>
+          <p class="md-subhead" translate="event.detail.personId"></p>
+        </div>
+      </md-list-item>
+    </div>
+    <div ng-if="EventDetailCtrl.event.header==='RECOGNIZED_PERSON'">
+      <md-list-item class="md-2-line">
+        <div class="md-list-item-text" ng-class="{'md-offset': $index == 2 }">
+          <h3>{{EventDetailCtrl.event.payload.personId}}</h3>
+          <p class="md-subhead" translate="event.detail.personId"></p>
+        </div>
+      </md-list-item>
+      <md-list-item class="md-2-line">
+        <div class="md-list-item-text" ng-class="{'md-offset': $index == 2 }">
+          <h3>{{EventDetailCtrl.event.payload.nome}}</h3>
+          <p class="md-subhead" translate="event.detail.name"></p>
+        </div>
+      </md-list-item>
+    </div>
+  </md-list>
+</md-content>
